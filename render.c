@@ -197,10 +197,10 @@ pixman_image_t *render(struct grim_state *state, struct grim_box *geometry,
 		pixman_f_transform_scale(&out2com, NULL,
 			(double)output_width / raw_output_width,
 			(double)output_height * output_flipped_y / raw_output_height);
+		pixman_f_transform_scale(&out2com, NULL, output_flipped_x, 1);
 		pixman_f_transform_rotate(&out2com, NULL,
 			round(cos(get_output_rotation(capture->transform))),
 			round(sin(get_output_rotation(capture->transform))));
-		pixman_f_transform_scale(&out2com, NULL, output_flipped_x, 1);
 		pixman_f_transform_translate(&out2com, NULL,
 			(double)output_width / 2,
 			(double)output_height / 2);
